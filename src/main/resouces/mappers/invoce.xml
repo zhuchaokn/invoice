@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stonegate.invoice.autoinvoice.dao.InvoiceDao">
+
+    <select id="getInvoiceByKey" parameterType="String" resultType="Invoice">
+        select id,key,begin_time as beginTime,
+        end_time as endTime,from as from,
+        to,use,date,taxi_price as taxiPrice,
+        get_on as getOn,
+        waiting from invoice where key = #{key}
+    </select>
+    <insert id="insertInvoice" parameterType="Invoice">
+        INSERT  INTO invoice(key,begin_time,
+        end_time as ,from , to,use,date,taxi_price ,
+        get_on, waiting)VALUES (#{key},#{beginTime},#{endTime},#{from},
+        #{to},#{date},#{taxiPrice},#{getOn},#{waiting})
+    </insert>
+
+</mapper>
